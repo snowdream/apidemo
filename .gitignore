@@ -1,0 +1,8 @@
+#ignore dirs
+bin
+.settings/
+
+#ignore files
+*.apk
+.~lock.*
+*~
