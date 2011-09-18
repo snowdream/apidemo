@@ -1,8 +1,17 @@
-#ignore dirs
+#Ignore the Dirs
+gen
 bin
-.settings/
+.metadata
 
-#ignore files
-*.apk
-.~lock.*
+#Ignore the Files
 *~
+*.apk
+*.o
+*.obj
+*.bak
+a.out
+*.i
+*.s
+*.i
+.*.swp
+

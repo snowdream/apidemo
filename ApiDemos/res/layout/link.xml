@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+
+  <!-- 四个TextView控件, 每个控件都显示包含链接的文本。 -->
+
+  <!-- text1 自动识别文本链接，例如URL网络地址和电话号码等。 -->
+  <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/text1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:autoLink="all"
+            android:text="@string/link_text_auto"
+            />
+
+  <!-- text2 使用包含用<a>等显式HTML标记来指定链接的文本资源。 -->
+  <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/text2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/link_text_manual"
+            />
+
+  <!-- text3 在Java代码中使用HTML类来构造包含链接的文本。 -->
+  <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/text3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+
+  <!-- text4 在Java代码中不使用HTML类来构造包含链接的文本。  -->
+  <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/text4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+
+</LinearLayout>
