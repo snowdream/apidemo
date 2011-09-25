@@ -1,36 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2007 The Android Open Source Project
-
-     Licensed under the Apache License, Version 2.0 (the "License");
-     you may not use this file except in compliance with the License.
-     You may obtain a copy of the License at
-  
-          http://www.apache.org/licenses/LICENSE-2.0
-  
-     Unless required by applicable law or agreed to in writing, software
-     distributed under the License is distributed on an "AS IS" BASIS,
-     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-     See the License for the specific language governing permissions and
-     limitations under the License.
--->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+     <!-- ImageButton，引用android系统内置图标sym_action_call（拨打电话）作为按钮图标  -->
     <ImageButton
+    	android:id="@+id/myImageButton01"
     	android:layout_width="100dip"
     	android:layout_height="50dip"
     	android:src="@android:drawable/sym_action_call" />
-    	
+
+     <!-- ImageButton，引用android系统内置图标sym_action_chat（聊天）作为按钮图标  -->
    	<ImageButton
+    	android:id="@+id/myImageButton02"   	
     	android:layout_width="wrap_content"
     	android:layout_height="wrap_content"
     	android:src="@android:drawable/sym_action_chat" />	
-    	
+
+     <!-- ImageButton，引用android系统内置图标sym_action_email（邮件）作为按钮图标 -->
    	<ImageButton
+     	android:id="@+id/myImageButton03"   	  	
     	android:layout_width="wrap_content"
     	android:layout_height="wrap_content"
     	android:src="@android:drawable/sym_action_email" />	
+    	
+     <!-- ImageButton，引用自定义图标作为按钮图标 -->
+   	<ImageButton
+     	android:id="@+id/myImageButton04"   	  	
+    	android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:src="@android:drawable/btn_star" />	    	
 </LinearLayout>
