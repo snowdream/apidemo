@@ -1,18 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2007 The Android Open Source Project
-
-     Licensed under the Apache License, Version 2.0 (the "License");
-     you may not use this file except in compliance with the License.
-     You may obtain a copy of the License at
-  
-          http://www.apache.org/licenses/LICENSE-2.0
-  
-     Unless required by applicable law or agreed to in writing, software
-     distributed under the License is distributed on an "AS IS" BASIS,
-     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-     See the License for the specific language governing permissions and
-     limitations under the License.
--->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
@@ -20,17 +6,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+	<!-- 一个星星数为3，评分2.5个星星的默认RatingBar -->
     <RatingBar android:id="@+id/ratingbar1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:numStars="3"
-        android:rating="2.5" />
-
+        android:rating="2.5"
+        android:stepSize="0.5" />
+        
+	<!-- 一个星星数为5，评分2.5个星星的默认RatingBar 默认步长0.5-->
     <RatingBar android:id="@+id/ratingbar2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:numStars="5"
-        android:rating="2.25" />
+        android:rating="2.25"
+        android:stepSize="0.5" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -41,6 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
             
+		 <!-- 一个stlye为ratingBarStyleSmall的RatingBar，不支持交互 -->
         <RatingBar android:id="@+id/small_ratingbar"
             style="?android:attr/ratingBarStyleSmall"
             android:layout_marginLeft="5dip"
@@ -50,11 +41,12 @@
             
     </LinearLayout>
 
-    <RatingBar android:id="@+id/indicator_ratingbar"
-        style="?android:attr/ratingBarStyleIndicator"
-        android:layout_marginLeft="5dip"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical" />
+		<!-- 一个stlye为indicator_ratingbar的RatingBar，不支持交互 -->
+	    <RatingBar android:id="@+id/indicator_ratingbar"
+           style="?android:attr/ratingBarStyleIndicator"
+           android:layout_marginLeft="5dip"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_gravity="center_vertical" />
             
 </LinearLayout>

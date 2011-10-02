@@ -1,31 +1,14 @@
-/*
- * Copyright (C) 2007 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.example.android.apis.view;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.RatingBar;
-import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.example.android.apis.R;
 
 /**
- * Demonstrates how to use a rating bar
+ * 演示如何使用rating bar
  */
 public class RatingBar1 extends Activity implements RatingBar.OnRatingBarChangeListener {
     RatingBar mSmallRatingBar;
@@ -37,34 +20,39 @@ public class RatingBar1 extends Activity implements RatingBar.OnRatingBarChangeL
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.ratingbar_1);
-        
+
+         // 通过findViewById方法获得一个TextView对象
         mRatingText = (TextView) findViewById(R.id.rating);
 
-        // We copy the most recently changed rating on to these indicator-only
-        // rating bars
+        // 通过findViewById方法获得两个用作指示牌的RatingBar对象
         mIndicatorRatingBar = (RatingBar) findViewById(R.id.indicator_ratingbar);
         mSmallRatingBar = (RatingBar) findViewById(R.id.small_ratingbar);
-        
-        // The different rating bars in the layout. Assign the listener to us.
+
+        // 通过findViewById方法获得两个可以交互的RatingBar对象，并设置监听器
         ((RatingBar)findViewById(R.id.ratingbar1)).setOnRatingBarChangeListener(this);
         ((RatingBar)findViewById(R.id.ratingbar2)).setOnRatingBarChangeListener(this);
     }
 
     public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromTouch) {
         final int numStars = ratingBar.getNumStars();
+         //显示当前星星总数多少，被选中高亮的星星数多少
         mRatingText.setText( 
                 getString(R.string.ratingbar_rating) + " " + rating + "/" + numStars);
 
-        // Since this rating bar is updated to reflect any of the other rating
-        // bars, we should update it to the current values.
+         //当用户点击上面可以交互的RatingBar，触发监听器，在这里更新两个作为指示牌作用的RatingBar对象的三个参数
+        //更新两个作为指示牌作用的RatingBar对象的星星总数
         if (mIndicatorRatingBar.getNumStars() != numStars) {
             mIndicatorRatingBar.setNumStars(numStars);
             mSmallRatingBar.setNumStars(numStars);
         }
+        
+        //更新两个作为指示牌作用的RatingBar对象的星星数（被选中高亮）
         if (mIndicatorRatingBar.getRating() != rating) {
             mIndicatorRatingBar.setRating(rating);
             mSmallRatingBar.setRating(rating);
         }
+        
+        //更新两个作为指示牌作用的RatingBar对象的步长值
         final float ratingBarStepSize = ratingBar.getStepSize();
         if (mIndicatorRatingBar.getStepSize() != ratingBarStepSize) {
             mIndicatorRatingBar.setStepSize(ratingBarStepSize);
