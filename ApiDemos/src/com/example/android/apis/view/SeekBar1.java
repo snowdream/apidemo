@@ -1,19 +1,3 @@
-/*
- * Copyright (C) 2007 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.example.android.apis.view;
 
 import android.app.Activity;
@@ -25,7 +9,7 @@ import com.example.android.apis.R;
 
 
 /**
- * Demonstrates how to use a seek bar
+ * 演示如何使用seek bar
  */
 public class SeekBar1 extends Activity implements SeekBar.OnSeekBarChangeListener {
     
@@ -39,21 +23,25 @@ public class SeekBar1 extends Activity implements SeekBar.OnSeekBarChangeListene
 
         setContentView(R.layout.seekbar_1);
         
+        // 通过findViewById方法获得一个SeekBar对象和两个用于提示作用的TextView
         mSeekBar = (SeekBar)findViewById(R.id.seek);
-        mSeekBar.setOnSeekBarChangeListener(this);
+        mSeekBar.setOnSeekBarChangeListener(this); //设置Seek Bar监听器
         mProgressText = (TextView)findViewById(R.id.progress);
         mTrackingText = (TextView)findViewById(R.id.tracking);
     }
 
+    //当用户用手移动滑动条，改变进度值时，触发该响应。progress表示当前进度值。
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromTouch) {
         mProgressText.setText(progress + " " + 
-                getString(R.string.seekbar_from_touch) + "=" + fromTouch);
+                getString(R.string.seekbar_from_touch) + "=" + fromTouch); 
     }
 
+    //用户开始对SeekBar进行触屏操作时触发响应
     public void onStartTrackingTouch(SeekBar seekBar) {
         mTrackingText.setText(getString(R.string.seekbar_tracking_on));
     }
 
+    //用户停止对SeekBar进行触屏操作时触发响应
     public void onStopTrackingTouch(SeekBar seekBar) {
         mTrackingText.setText(getString(R.string.seekbar_tracking_off));
     }

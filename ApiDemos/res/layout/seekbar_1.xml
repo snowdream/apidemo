@@ -1,24 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2007 The Android Open Source Project
-
-     Licensed under the Apache License, Version 2.0 (the "License");
-     you may not use this file except in compliance with the License.
-     You may obtain a copy of the License at
-  
-          http://www.apache.org/licenses/LICENSE-2.0
-  
-     Unless required by applicable law or agreed to in writing, software
-     distributed under the License is distributed on an "AS IS" BASIS,
-     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-     See the License for the specific language governing permissions and
-     limitations under the License.
--->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!-- 一个SeekBar对象-->
+    <!-- android:max="100" 表示seekbar最大值是100，即取值范围0~100-->
+    <!-- android:progress="50" 表示seekbar当前进度取值是50-->
+    <!-- android:secondaryProgress="75"  表示seekbar当前第二进度取值是75-->
     <SeekBar android:id="@+id/seek"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -26,10 +16,12 @@
         android:progress="50"
         android:secondaryProgress="75" />
 
+    <!-- 一个TextView对象，用于显示当前的progress进度值 -->
     <TextView android:id="@+id/progress"
        	android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-
+    
+    <!-- 一个TextView对象，用于显示用户当前是否在对Seek Bar进行触屏操作 -->
     <TextView android:id="@+id/tracking"
        	android:layout_width="match_parent"
         android:layout_height="wrap_content" />
