@@ -1,19 +1,3 @@
-/*
- * Copyright (C) 2007 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.example.android.apis.view;
 
 import com.example.android.apis.R;
@@ -26,9 +10,7 @@ import android.view.View;
 import android.widget.Button;
 
 /**
- * Demonstrates the use of progress dialogs.  Uses {@link Activity#onCreateDialog}
- * and {@link Activity#showDialog} to ensure the dialogs will be properly saved
- * and restored.
+ * 演示如何使用进度对话框
  */
 public class ProgressBar3 extends Activity {
 
@@ -48,14 +30,14 @@ public class ProgressBar3 extends Activity {
         Button button = (Button) findViewById(R.id.showIndeterminate);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                showDialog(DIALOG1_KEY);
+                showDialog(DIALOG1_KEY); //显示带有标题的进度对话框
             }
         });
 
         button = (Button) findViewById(R.id.showIndeterminateNoTitle);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                showDialog(DIALOG2_KEY);
+                showDialog(DIALOG2_KEY); //显示不带标题的进度对话框
             }
         });
     }
@@ -63,19 +45,19 @@ public class ProgressBar3 extends Activity {
     @Override
     protected Dialog onCreateDialog(int id) {
         switch (id) {
-            case DIALOG1_KEY: {
-                ProgressDialog dialog = new ProgressDialog(this);
-                dialog.setTitle("Indeterminate");
-                dialog.setMessage("Please wait while loading...");
-                dialog.setIndeterminate(true);
-                dialog.setCancelable(true);
+            case DIALOG1_KEY: {           	  
+                ProgressDialog dialog = new ProgressDialog(this);  //创建ProgressDialog
+                dialog.setTitle("Indeterminate"); //设置标题
+                dialog.setMessage("Please wait while loading..."); //设置主题信息
+                dialog.setIndeterminate(true);  //设置进度条为不明确进度的类型（环形）
+                dialog.setCancelable(true);  //设置窗口可以通过退回键取消
                 return dialog;
             }
             case DIALOG2_KEY: {
-                ProgressDialog dialog = new ProgressDialog(this);
-                dialog.setMessage("Please wait while loading...");
-                dialog.setIndeterminate(true);
-                dialog.setCancelable(true);
+                ProgressDialog dialog = new ProgressDialog(this); //创建ProgressDialog
+                dialog.setMessage("Please wait while loading...");  //设置主题信息
+                dialog.setIndeterminate(true);  //设置进度条为不明确进度的类型（环形）
+                dialog.setCancelable(true); //设置窗口可以通过退回键取消
                 return dialog;
             }
         }

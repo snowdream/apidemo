@@ -1,19 +1,3 @@
-/*
- * Copyright (C) 2007 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.example.android.apis.view;
 
 import com.example.android.apis.R;
@@ -26,7 +10,7 @@ import android.widget.Button;
 
 
 /**
- * Demonstrates how to use an indeterminate progress indicator in the window's title bar.
+ * 演示如何在标题栏中使用不确定进度值的进度条
  */
 public class ProgressBar4 extends Activity {
     private boolean mToggleIndeterminate = false;
@@ -35,11 +19,14 @@ public class ProgressBar4 extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Request progress bar
+        // 请求在标题栏中显示不确定进度类型的进度条
         requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         setContentView(R.layout.progressbar_4);
+        
+        // 设置标题栏中的进度条是否可见
         setProgressBarIndeterminateVisibility(mToggleIndeterminate);
         
+        //点击一次，改变一次mToggleIndeterminate值
         Button button = (Button) findViewById(R.id.toggle);
         button.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
