@@ -1,19 +1,3 @@
-/*
- * Copyright (C) 2007 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.example.android.apis.view;
 
 import com.example.android.apis.R;
@@ -39,9 +23,11 @@ public class RadioGroup1 extends Activity implements RadioGroup.OnCheckedChangeL
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.radio_group_1);
+
+        // 通过findViewById方法获得一个RadioGroup对象        
         mRadioGroup = (RadioGroup) findViewById(R.id.menu);
 
-        // test adding a radio button programmatically
+        // 向RadioGroup中动态添加一个RadioButton对象
         RadioButton newRadioButton = new RadioButton(this);
         newRadioButton.setText(R.string.radio_group_snack);
         newRadioButton.setId(R.id.snack);
@@ -50,24 +36,49 @@ public class RadioGroup1 extends Activity implements RadioGroup.OnCheckedChangeL
                 RadioGroup.LayoutParams.WRAP_CONTENT);
         mRadioGroup.addView(newRadioButton, 0, layoutParams);
 
-        // test listening to checked change events
-        String selection = getString(R.string.radio_group_selection);
+        //为RadioGroup添加监听器，当点击RadioButton时，会触发监听器， 执行onCheckedChanged中的动作
         mRadioGroup.setOnCheckedChangeListener(this);
+        
+        //在TextView控件上显示被选择项的提示信息
+        String selection = getString(R.string.radio_group_selection);
         mChoice = (TextView) findViewById(R.id.choice);
         mChoice.setText(selection + mRadioGroup.getCheckedRadioButtonId());
 
-        // test clearing the selection
+        // 通过findViewById方法获得一个Button对象，点击该对象会清除RadioGroup中的选择项
         Button clearButton = (Button) findViewById(R.id.clear);
         clearButton.setOnClickListener(this);
     }
 
+    //当RadioButton状态发生改变时，触发监听器，执行下面的动作。当清除选择项时,checkedId为-1。
     public void onCheckedChanged(RadioGroup group, int checkedId) {
-        String selection = getString(R.string.radio_group_selection);
-        String none = getString(R.string.radio_group_none);
-        mChoice.setText(selection +
-                (checkedId == View.NO_ID ? none : checkedId));
+    	String selection = getString(R.string.radio_group_selection);
+    	String none = getString(R.string.radio_group_none);
+    	String choice = null;
+    	//根据checkedId判断用户选择了哪一个选项，并执行相应的动作。
+    	switch (checkedId) {
+    	case R.id.breakfast: 
+    		choice = "breakfast";
+    		break;
+    	case R.id.lunch:
+    		choice = "lunch";
+    		break;
+    	case R.id.dinner:
+    		choice = "dinner";
+    		break;
+    	case R.id.all:
+    		choice = "all";
+    		break;		
+    	case R.id.snack:
+    		choice = "snack";
+    		break;	   		
+    	default:
+    		break;
+    	}
+    	mChoice.setText(selection + choice +
+    			(checkedId == View.NO_ID ? none : checkedId));       
     }
 
+    //点击clearButton时，清空所有RadioButton的选择状态
     public void onClick(View v) {
         mRadioGroup.clearCheck();
     }
