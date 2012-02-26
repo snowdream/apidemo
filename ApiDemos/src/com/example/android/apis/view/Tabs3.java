@@ -1,19 +1,3 @@
-/*
- * Copyright (C) 2008 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.example.android.apis.view;
 
 import android.app.TabActivity;
@@ -22,7 +6,8 @@ import android.widget.TabHost;
 import android.content.Intent;
 
 /**
- * An example of tab content that launches an activity via {@link android.widget.TabHost.TabSpec#setContent(android.content.Intent)}
+ *  演示如何使用TabHost
+ *
  */
 public class Tabs3 extends TabActivity {
 
@@ -30,8 +15,13 @@ public class Tabs3 extends TabActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        //获取TabActivity内置的TabHost对象
         final TabHost tabHost = getTabHost();
 
+        //新建选项卡
+        //tabHost.newTabSpec("tab1")  新建一个以“tab1”为标记的选项卡
+        //setIndicator("tab1")    设置选项卡标签标题为 list
+        //setContent(new Intent(this, List1.class)))  点击该选项卡时，通过Intent，跳转到List1界面
         tabHost.addTab(tabHost.newTabSpec("tab1")
                 .setIndicator("list")
                 .setContent(new Intent(this, List1.class)));
@@ -40,8 +30,7 @@ public class Tabs3 extends TabActivity {
                 .setIndicator("photo list")
                 .setContent(new Intent(this, List8.class)));
         
-        // This tab sets the intent flag so that it is recreated each time
-        // the tab is clicked.
+        // 这个选项卡设置 Intent.FLAG_ACTIVITY_CLEAR_TOP 标记，是为了 每次点击该选项卡时，重新创建选项卡内容。
         tabHost.addTab(tabHost.newTabSpec("tab3")
                 .setIndicator("destroy")
                 .setContent(new Intent(this, Controls2.class)

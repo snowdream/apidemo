@@ -1,43 +1,31 @@
-/*
- * Copyright (C) 2008 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.example.android.apis.view;
 
 import android.app.TabActivity;
 import android.os.Bundle;
 import android.widget.TabHost;
-import android.widget.TabHost.TabSpec;
 import android.view.LayoutInflater;
-import android.view.View;
-
 import com.example.android.apis.R;
 
 /**
- * An example of tabs that uses labels ({@link TabSpec#setIndicator(CharSequence)})
- * for its indicators and views by id from a layout file ({@link TabSpec#setContent(int)}).
+ *  演示如何使用TabHost
+ *
  */
 public class Tabs1 extends TabActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        
+        //获取TabActivity内置的TabHost对象
         TabHost tabHost = getTabHost();
         
+        //将样式R.layout.tabs1解压出来，并应用于TabHost对象
         LayoutInflater.from(this).inflate(R.layout.tabs1, tabHost.getTabContentView(), true);
 
+        //新建选项卡
+        //tabHost.newTabSpec("tab1")  新建一个以“tab1”为标记的选项卡
+        //setIndicator("tab1")    设置选项卡标签标题为 tab1
+        //setContent(R.id.view1)) 设置选项卡内容为 R.id.view1
         tabHost.addTab(tabHost.newTabSpec("tab1")
                 .setIndicator("tab1")
                 .setContent(R.id.view1));
