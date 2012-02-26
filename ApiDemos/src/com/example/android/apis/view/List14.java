@@ -19,6 +19,7 @@ package com.example.android.apis.view;
 import android.app.ListActivity;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -117,11 +118,14 @@ public class List14 extends ListActivity {
                 // and the ImageView.
                 holder = (ViewHolder) convertView.getTag();
             }
+    		long start = System.currentTimeMillis();
 
             // Bind the data efficiently with the holder.
             holder.text.setText(DATA[position]);
             holder.icon.setImageBitmap((position & 1) == 1 ? mIcon1 : mIcon2);
+    		long end = System.currentTimeMillis();
 
+    		Log.i("convertView","TIME: "+ String.valueOf((end - start)*0.001));
             return convertView;
         }
 

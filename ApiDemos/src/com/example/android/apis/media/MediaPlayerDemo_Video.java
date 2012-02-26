@@ -78,7 +78,7 @@ public class MediaPlayerDemo_Video extends Activity implements
                     /*
                      * TODO: Set the path variable to a local media file path.
                      */
-                    path = "";
+                    path = "/sdcard/tjp.mp4";
                     if (path == "") {
                         // Tell the user to provide a media file URL.
                         Toast

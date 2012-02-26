@@ -1,23 +1,8 @@
-/*
- * Copyright (C) 2007 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.example.android.apis.view;
 
-// Need the following import to get access to the app resources, since this
-// class is in a sub-package.
+/**
+ * 演示如何使用下拉列表控件Spinner
+ */
 import com.example.android.apis.R;
 
 import android.app.Activity;
@@ -32,7 +17,8 @@ import android.widget.AdapterView.OnItemSelectedListener;
 
 public class Spinner1 extends Activity {
 
-    void showToast(CharSequence msg) {
+    // 调用Toast控件来显示消息msg，用来提示用户
+   void showToast(CharSequence msg) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
     
@@ -41,23 +27,41 @@ public class Spinner1 extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.spinner_1);
 
+        // 通过findViewById方法获得一个Spinner对象s1，下同
         Spinner s1 = (Spinner) findViewById(R.id.spinner1);
+        
+        //根据颜色数组R.array.colors创建一个数组适配器
+        //第二个参数 R.array.colors 为数组适配器数据源
+        //第三个参数 是下拉列表中每个数据所占据的 View 的样式 。这里采用系统默认样式 android.R.layout.simple_spinner_item 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
                 this, R.array.colors, android.R.layout.simple_spinner_item);
+        
+        //设置适配器下拉样式，这里是系统默认样式 android.R.layout.simple_spinner_dropdown_item
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        
+        //将 Spinner 控件绑定适配器 adapter
         s1.setAdapter(adapter);
+        
+        //设置监听器。当用户选择其中一个选项时，触发响应。
         s1.setOnItemSelectedListener(
+        		//选择其中一个选项时，触发该响应
+        		//parent:装载数据的视图列表
+        		//view:列表中当前选中的item视图
+        		//position:选中的item在AdapterView中的索引
+        		//id:选中的item视图控件的id值
                 new OnItemSelectedListener() {
                     public void onItemSelected(
                             AdapterView<?> parent, View view, int position, long id) {
                         showToast("Spinner1: position=" + position + " id=" + id);
                     }
 
+                    //什么选项都没选择时，触发该响应
                     public void onNothingSelected(AdapterView<?> parent) {
                         showToast("Spinner1: unselected");
                     }
                 });
 
+        // 通过findViewById方法获得一个Spinner对象s2
         Spinner s2 = (Spinner) findViewById(R.id.spinner2);
         adapter = ArrayAdapter.createFromResource(this, R.array.planets,
                 android.R.layout.simple_spinner_item);
